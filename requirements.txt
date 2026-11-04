@@ -1,0 +1,17 @@
+fastapi>=0.110
+uvicorn[standard]>=0.29
+sqlalchemy>=2.0
+pydantic>=2.6
+pillow>=10.0
+imagehash>=4.3
+opencv-python-headless>=4.9
+python-multipart>=0.0.9
+httpx>=0.27
+pytest>=8.0
+
+# --- production-scale additions ---
+psycopg[binary]>=3.1      # PostgreSQL driver (MS SQL Server in prod: add pyodbc instead)
+celery[redis]>=5.4         # real job queue, replaces in-process BackgroundTasks
+redis>=5.0                 # also used directly for distributed rate limiting
+alembic>=1.13               # versioned schema migrations (migrations/), required whenever AUTO_CREATE_SCHEMA=false
+pyjwt[crypto]>=2.8          # app/auth_jwt.py, active when AUTH_BACKEND=jwt
